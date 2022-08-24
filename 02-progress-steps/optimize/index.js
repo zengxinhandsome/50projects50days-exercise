@@ -6,19 +6,16 @@ const btnPrev = document.querySelector(".btn-prev");
 
 const btnNext = document.querySelector(".btn-next");
 
-const getLastActiveItem = () => {
-  const activeItems = document.querySelectorAll(".progress-item.active");
-  return activeItems[activeItems.length - 1];
-};
+const progressItems = document.querySelectorAll(".progress-item");
+
+const progressLine = document.querySelector(".progress-line");
 
 btnPrev.addEventListener("click", () => {
   if (currentStep > MIN_STEP) {
     currentStep--;
-    const lastActiveItem = getLastActiveItem();
-    lastActiveItem.classList.remove("active");
-    lastActiveItem.previousElementSibling.firstElementChild.classList.remove(
-      "w-full"
-    );
+    progressItems[currentStep].classList.remove("active");
+    progressLine.style.width =
+      (1 / (MAX_STEP - MIN_STEP)) * (currentStep - MIN_STEP) * 100 + "%";
     if (currentStep === MIN_STEP) {
       btnPrev.disabled = true;
     } else {
@@ -30,11 +27,9 @@ btnPrev.addEventListener("click", () => {
 btnNext.addEventListener("click", () => {
   if (currentStep < MAX_STEP) {
     currentStep++;
-    const lastActiveItem = getLastActiveItem();
-    const nextItem = lastActiveItem.nextElementSibling;
-    nextItem.firstElementChild.classList.add("w-full");
-    nextItem.nextElementSibling.classList.add("active");
-
+    progressItems[currentStep - 1].classList.add("active");
+    progressLine.style.width =
+      (1 / (MAX_STEP - MIN_STEP)) * (currentStep - MIN_STEP) * 100 + "%";
     if (currentStep === MAX_STEP) {
       btnNext.disabled = true;
     } else {

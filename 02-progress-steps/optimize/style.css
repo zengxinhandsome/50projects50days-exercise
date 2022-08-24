@@ -14,10 +14,6 @@ body .active {
   border-color: var(--primary-color);
 }
 
-body .w-full {
-  width: 100%;
-}
-
 .wrapper {
   height: 100%;
   display: flex;
@@ -27,12 +23,32 @@ body .w-full {
 }
 
 .progress {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+  position: relative;
+}
+
+.progress-line {
+  height: 3px;
+  background-color: var(--primary-color);
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  width: 0;
+  transition: width 0.4s ease;
+}
+
+.progress::before {
+  content: "";
+  height: 3px;
+  position: absolute;
+  width: 100%;
+  background-color: var(--empty-color);
+  transform: translateY(-50%);
+  top: 50%;
 }
 
 .progress-item {
+  z-index: 2;
   display: inline-block;
   width: 25px;
   height: 25px;
@@ -42,21 +58,12 @@ body .w-full {
   line-height: 25px;
   position: relative;
   transition: border 0.4s ease;
+  background-color: #fff;
+  margin-right: 60px;
 }
 
-.line {
-  display: flex;
-  align-items: center;
-  background-color: var(--empty-color);
-  width: 60px;
-}
-
-.inner-line {
-  display: inline-block;
-  height: 3px;
-  background-color: var(--primary-color);
-  width: 0;
-  transition: width 0.4s ease;
+.progress-item:last-of-type {
+  margin-right: 0;
 }
 
 .btns {
@@ -74,6 +81,14 @@ body .w-full {
   margin: 5px;
   font-size: 14px;
   border: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  outline: 0;
 }
 
 .btn-next {
