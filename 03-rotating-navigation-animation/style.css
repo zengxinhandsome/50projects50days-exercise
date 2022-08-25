@@ -1,0 +1,75 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Muli', sans-serif;
+  background-color: #333;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  background-color: #fff;
+  transition: transform 0.5s linear;
+  transform-origin: 0 0;
+  padding-top: 80px;
+  padding-bottom: 100px;
+  padding-left: max(50px, 15%);
+  padding-right: max(50px, 15%);
+}
+
+.menu {
+  width: 200px;
+  height: 200px;
+  background-color: #ff7979;
+  border-radius: 50%;
+  position: fixed;
+  top: -100px;
+  left: -100px;
+  transition: transform 0.5s;
+}
+
+.menu-btn {
+  font-size: 26px;
+  color: #fff;
+  position: absolute;
+  cursor: pointer;
+}
+
+.menu-btn.fa-bars {
+  left: 100px;
+  top: 65%;
+  left: 65%;
+}
+
+.menu-btn.fa-times {
+  left: 100px;
+  top: 65%;
+  left: 25%;
+}
+
+.nav-list {
+  padding: 0;
+  list-style: none;
+  font-size: 17px;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 3%;
+  left: -200px;
+  color: #fff;
+  transition: left 0.6s linear;
+}
+
+.nav-list li {
+  margin-bottom: 30px;
+  transition: margin 0.6s linear;
+}
+
+.nav-list-show li:nth-of-type(2) {
+  margin-left: 20px;
+}
+
+.nav-list-show li:nth-of-type(3) {
+  margin-left: 40px;
+}
+
